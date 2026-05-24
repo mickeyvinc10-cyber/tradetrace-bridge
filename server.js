@@ -8,16 +8,14 @@ app.post("/mt5webhook", async (req, res) => {
   try {
     console.log("MT5 EVENT:", req.body);
 
-    const response = await fetch(
-      "https://api.base44.app/api/apps/fanatic-trade-trace-log/functions/mt5webhook"      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-webhook-secret": process.env.MT5_WEBHOOK_SECRET
-        },
-        body: JSON.stringify(req.body)
-      }
-    );
+    const response = await fetch("https://api.base44.app/api/apps/fanatic-trade-trace-log/functions/mt5webhook", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-webhook-secret": process.env.MT5_WEBHOOK_SECRET
+      },
+      body: JSON.stringify(req.body)
+    });
 
     const result = await response.text();
 
@@ -27,7 +25,6 @@ app.post("/mt5webhook", async (req, res) => {
       forwarded: true,
       base44_response: result
     });
-
   } catch (err) {
     console.error("ERROR:", err);
 
