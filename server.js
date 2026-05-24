@@ -8,7 +8,7 @@ app.post("/mt5webhook", async (req, res) => {
   try {
     console.log("MT5 EVENT:", req.body);
 
-    const response = await fetch("https://api.base44.app/api/apps/fanatic-trade-trace-log/functions/mt5webhook", {
+    const response = await fetch("https://fanatic-trade-trace-log.com/functions/mt5webhook", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,12 +25,15 @@ app.post("/mt5webhook", async (req, res) => {
       forwarded: true,
       base44_response: result
     });
+
   } catch (err) {
+
     console.error("ERROR:", err);
 
     res.status(500).json({
       error: err.message
     });
+
   }
 });
 
