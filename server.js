@@ -7,8 +7,7 @@ app.use(express.json());
 app.post("/mt5webhook", async (req, res) => {
   try {
     console.log("MT5 EVENT:", req.body);
-
-    const response = await fetch("https://fanatic-trade-trace-log.base44.app/functions/mt5webhook", {
+console.log("SENDING TO BASE44...");    const response = await fetch("https://fanatic-trade-trace-log.base44.app/functions/mt5webhook", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
